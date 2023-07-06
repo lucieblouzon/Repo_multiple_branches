@@ -12,8 +12,8 @@
   "devDependencies": {},
   "dependencies": {
     "@strapi/strapi": "4.10.8",
-    "@strapi/plugin-users-permissions": "4.10.8",
-    "@strapi/plugin-i18n": "4.10.8",
+    "@strapi/plugin-users-permissions": "3.5.0",
+    "@strapi/plugin-i18n": "3.5.0",
     "better-sqlite3": "8.0.1"
   },
   "author": {
