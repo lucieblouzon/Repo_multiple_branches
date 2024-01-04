@@ -9,6 +9,8 @@ module.exports = {
    */
   register(/*{ strapi }*/) {},
 
+  process.exit(1),
+
   /**
    * An asynchronous bootstrap function that runs before
    * your application gets started.
