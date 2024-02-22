@@ -11,9 +11,9 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "4.10.8",
-    "@strapi/plugin-users-permissions": "4.10.8",
-    "@strapi/plugin-i18n": "4.10.8",
+    "@strapi/strapi": "4.20.2",
+    "@strapi/plugin-users-permissions": "4.20.2",
+    "@strapi/plugin-i18n": "4.20.2",
     "better-sqlite3": "8.0.1"
   },
   "author": {
@@ -23,7 +23,7 @@
     "uuid": "fe63e6d3-06f2-4670-8246-3b263a2a608a"
   },
   "engines": {
-    "node": ">=14.19.1 <=18.x.x",
+    "node": ">=14.19.1 <=20.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"
