@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import mime from 'mime-types';
 
-const dataJson = require('../data/data.json');
+const dataJson = require(path.join(process.cwd(), 'data', 'data.json'));
 const { categories, authors, articles, global, about, tags, products, events, faq } = dataJson;
 
 async function isFirstRun() {
