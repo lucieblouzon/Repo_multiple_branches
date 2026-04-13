@@ -59,8 +59,191 @@
       "name": "Sarah Baker",
       "email": "sarahbaker@strapi.io",
       "avatar": "sarahbaker@strapi.io.jpg"
+    },
+    {
+      "name": "Alice Martin",
+      "email": "alice.martin@example.com"
+    },
+    {
+      "name": "Bob Chen",
+      "email": "bob.chen@example.com"
+    },
+    {
+      "name": "Clara Rodriguez",
+      "email": "clara.rodriguez@example.com"
     }
   ],
+  "tags": [
+    { "name": "Technology", "slug": "technology", "color": "#3498db" },
+    { "name": "Design", "slug": "design", "color": "#e74c3c" },
+    { "name": "Business", "slug": "business", "color": "#2ecc71" },
+    { "name": "Science", "slug": "science", "color": "#9b59b6" },
+    { "name": "Lifestyle", "slug": "lifestyle", "color": "#f39c12" },
+    { "name": "Food", "slug": "food", "color": "#e67e22" },
+    { "name": "Travel", "slug": "travel", "color": "#1abc9c" },
+    { "name": "Health", "slug": "health", "color": "#27ae60" }
+  ],
+  "products": [
+    {
+      "name": "Strapi Starter Kit",
+      "slug": "strapi-starter-kit",
+      "description": "Everything you need to get started with Strapi",
+      "price": 49.99,
+      "quantity": 100,
+      "isAvailable": true,
+      "status": "active",
+      "rating": 4.5,
+      "releaseDate": "2025-01-15",
+      "metadata": { "sku": "STR-001", "weight": "digital", "category": "software" },
+      "features": [
+        { "name": "Framework", "value": "Strapi v5", "isHighlighted": true },
+        { "name": "Database", "value": "SQLite / PostgreSQL", "isHighlighted": false },
+        { "name": "Support", "value": "Community", "isHighlighted": false }
+      ]
+    },
+    {
+      "name": "Premium Headless Theme",
+      "slug": "premium-headless-theme",
+      "description": "A beautiful, responsive theme designed for headless CMS",
+      "price": 129.00,
+      "quantity": 50,
+      "isAvailable": true,
+      "status": "active",
+      "rating": 4.8,
+      "releaseDate": "2025-03-01",
+      "metadata": { "sku": "THM-001", "format": "Next.js", "license": "commercial" },
+      "features": [
+        { "name": "Responsive", "value": "Yes", "isHighlighted": true },
+        { "name": "Dark Mode", "value": "Included", "isHighlighted": true },
+        { "name": "Components", "value": "50+", "isHighlighted": false }
+      ]
+    },
+    {
+      "name": "API Analytics Dashboard",
+      "slug": "api-analytics-dashboard",
+      "description": "Monitor and analyze your API usage in real-time",
+      "price": 29.99,
+      "quantity": 200,
+      "isAvailable": true,
+      "status": "active",
+      "rating": 4.2,
+      "releaseDate": "2025-06-10",
+      "metadata": { "sku": "ANL-001", "type": "SaaS", "billing": "monthly" },
+      "features": [
+        { "name": "Real-time", "value": "Yes", "isHighlighted": true },
+        { "name": "Export", "value": "CSV, PDF", "isHighlighted": false }
+      ]
+    },
+    {
+      "name": "Content Migration Tool",
+      "slug": "content-migration-tool",
+      "description": "Migrate content from any CMS to Strapi seamlessly",
+      "price": 0,
+      "quantity": 999,
+      "isAvailable": true,
+      "status": "active",
+      "rating": 3.9,
+      "releaseDate": "2024-11-20",
+      "metadata": { "sku": "MIG-001", "type": "open-source", "license": "MIT" },
+      "features": [
+        { "name": "Source CMS", "value": "WordPress, Contentful, Sanity", "isHighlighted": true },
+        { "name": "Price", "value": "Free", "isHighlighted": true }
+      ]
+    },
+    {
+      "name": "Legacy Plugin Pack",
+      "slug": "legacy-plugin-pack",
+      "description": "A collection of plugins for Strapi v4 (no longer maintained)",
+      "price": 19.99,
+      "quantity": 0,
+      "isAvailable": false,
+      "status": "discontinued",
+      "rating": 3.0,
+      "releaseDate": "2023-05-01",
+      "metadata": { "sku": "LGC-001", "deprecated": true },
+      "features": [
+        { "name": "Plugins", "value": "12", "isHighlighted": false },
+        { "name": "Strapi Version", "value": "v4 only", "isHighlighted": true }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "title": "StrapiConf 2026",
+      "slug": "strapiconf-2026",
+      "description": "The annual Strapi community conference",
+      "startDate": "2026-09-15T09:00:00.000Z",
+      "endDate": "2026-09-16T18:00:00.000Z",
+      "isOnline": false,
+      "maxAttendees": 500,
+      "ticketPrice": 199.00,
+      "type": "conference",
+      "location": {
+        "venue": "Le Centquatre-Paris",
+        "address": "5 Rue Curial",
+        "city": "Paris",
+        "country": "France",
+        "latitude": 48.8924,
+        "longitude": 2.3707
+      },
+      "schedule": [
+        { "title": "Keynote: The Future of Strapi", "startTime": "09:30:00.000", "endTime": "10:30:00.000", "speaker": "Pierre Burgy", "description": "Opening keynote" },
+        { "title": "Workshop: Building with Strapi v5", "startTime": "11:00:00.000", "endTime": "12:30:00.000", "speaker": "Alice Martin", "description": "Hands-on workshop" },
+        { "title": "Panel: Headless CMS in Production", "startTime": "14:00:00.000", "endTime": "15:30:00.000", "speaker": "Multiple speakers", "description": "Real-world experiences" }
+      ]
+    },
+    {
+      "title": "Headless CMS Webinar",
+      "slug": "headless-cms-webinar",
+      "description": "Learn the basics of headless CMS architecture",
+      "startDate": "2026-05-20T17:00:00.000Z",
+      "endDate": "2026-05-20T18:30:00.000Z",
+      "isOnline": true,
+      "maxAttendees": 1000,
+      "ticketPrice": 0,
+      "type": "webinar",
+      "schedule": [
+        { "title": "Introduction to Headless CMS", "startTime": "17:00:00.000", "endTime": "17:30:00.000", "speaker": "Bob Chen", "description": "Overview and key concepts" },
+        { "title": "Live Demo", "startTime": "17:30:00.000", "endTime": "18:00:00.000", "speaker": "Bob Chen", "description": "Building a blog in 30 minutes" },
+        { "title": "Q&A", "startTime": "18:00:00.000", "endTime": "18:30:00.000", "speaker": "", "description": "Open questions from attendees" }
+      ]
+    },
+    {
+      "title": "API Design Hackathon",
+      "slug": "api-design-hackathon",
+      "description": "48-hour hackathon focused on building innovative APIs",
+      "startDate": "2026-07-10T08:00:00.000Z",
+      "endDate": "2026-07-12T20:00:00.000Z",
+      "isOnline": false,
+      "maxAttendees": 150,
+      "ticketPrice": 25.00,
+      "type": "hackathon",
+      "location": {
+        "venue": "Station F",
+        "address": "5 Parvis Alan Turing",
+        "city": "Paris",
+        "country": "France",
+        "latitude": 48.8341,
+        "longitude": 2.3699
+      },
+      "schedule": [
+        { "title": "Kick-off", "startTime": "08:00:00.000", "endTime": "09:00:00.000", "speaker": "Clara Rodriguez", "description": "Rules and team formation" },
+        { "title": "Hacking begins", "startTime": "09:00:00.000", "endTime": "20:00:00.000", "speaker": "", "description": "Build your API project" },
+        { "title": "Final presentations", "startTime": "14:00:00.000", "endTime": "18:00:00.000", "speaker": "All teams", "description": "Demo your project to the judges" }
+      ]
+    }
+  ],
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "entries": [
+      { "question": "What is Strapi?", "answer": "Strapi is the leading open-source headless CMS. It is 100% JavaScript and fully customizable." },
+      { "question": "Is Strapi free?", "answer": "Yes! Strapi is open-source and free to use. There is also a paid Cloud offering for hosting and enterprise features." },
+      { "question": "Which databases does Strapi support?", "answer": "Strapi v5 supports **SQLite**, **PostgreSQL**, and **MySQL**." },
+      { "question": "Can I use Strapi with any frontend?", "answer": "Absolutely. Strapi is headless, meaning it provides a REST or GraphQL API that any frontend framework (React, Vue, Next.js, Nuxt, etc.) can consume." },
+      { "question": "How do I deploy Strapi?", "answer": "You can deploy Strapi on **Strapi Cloud**, or self-host on platforms like Railway, Render, AWS, DigitalOcean, and more." },
+      { "question": "Does Strapi support internationalization?", "answer": "Yes, Strapi has built-in i18n support that allows you to manage content in multiple languages." }
+    ]
+  },
   "articles": [
     {
       "title": "The internet's Own boy",

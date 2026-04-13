@@ -3,7 +3,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const mime = require('mime-types');
-const { categories, authors, articles, global, about } = require('../data/data.json');
+const { categories, authors, articles, global, about, tags, products, events, faq } = require('../data/data.json');
 
 async function seedExampleApp() {
   const shouldImportSeedData = await isFirstRun();
@@ -224,16 +224,59 @@ async function importCategories() {
 
 async function importAuthors() {
   for (const author of authors) {
-    const avatar = await checkFileExistsBeforeUpload([author.avatar]);
+    if (author.avatar) {
+      const avatar = await checkFileExistsBeforeUpload([author.avatar]);
+      await createEntry({
+        model: 'author',
+        entry: {
+          ...author,
+          avatar,
+        },
+      });
+    } else {
+      await createEntry({ model: 'author', entry: author });
+    }
+  }
+}
 
+async function importTags() {
+  for (const tag of tags) {
+    await createEntry({ model: 'tag', entry: tag });
+  }
+}
+
+async function importProducts() {
+  for (const product of products) {
     await createEntry({
-      model: 'author',
+      model: 'product',
       entry: {
-        ...author,
-        avatar,
+        ...product,
+        publishedAt: Date.now(),
       },
     });
   }
+}
+
+async function importEvents() {
+  for (const event of events) {
+    await createEntry({
+      model: 'event',
+      entry: {
+        ...event,
+        publishedAt: Date.now(),
+      },
+    });
+  }
+}
+
+async function importFaq() {
+  await createEntry({
+    model: 'faq',
+    entry: {
+      ...faq,
+      publishedAt: Date.now(),
+    },
+  });
 }
 
 async function importSeedData() {
@@ -244,14 +287,22 @@ async function importSeedData() {
     author: ['find', 'findOne'],
     global: ['find', 'findOne'],
     about: ['find', 'findOne'],
+    tag: ['find', 'findOne'],
+    product: ['find', 'findOne'],
+    event: ['find', 'findOne'],
+    faq: ['find', 'findOne'],
   });
 
   // Create all entries
   await importCategories();
+  await importTags();
   await importAuthors();
   await importArticles();
+  await importProducts();
+  await importEvents();
   await importGlobal();
   await importAbout();
+  await importFaq();
 }
 
 async function main() {
