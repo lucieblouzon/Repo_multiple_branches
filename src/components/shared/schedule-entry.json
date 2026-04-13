@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_shared_schedule_entries",
+  "info": {
+    "displayName": "Schedule Entry",
+    "icon": "clock",
+    "description": "A time slot in an event schedule"
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "startTime": {
+      "type": "time",
+      "required": true
+    },
+    "endTime": {
+      "type": "time"
+    },
+    "speaker": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
