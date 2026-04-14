@@ -3,7 +3,8 @@ import fs from 'fs-extra';
 import path from 'path';
 import mime from 'mime-types';
 
-const dataJson = require(path.join(process.cwd(), 'data', 'data.json'));
+const PROJECT_ROOT = path.resolve(__dirname, '..', '..');
+const dataJson = require(path.join(PROJECT_ROOT, 'data', 'data.json'));
 const { categories, authors, articles, global, about, tags, products, events, faq } = dataJson;
 
 async function isFirstRun() {
@@ -44,7 +45,7 @@ function getFileSizeInBytes(filePath: string) {
 }
 
 function getFileData(fileName: string) {
-  const filePath = path.join('data', 'uploads', fileName);
+  const filePath = path.join(PROJECT_ROOT, 'data', 'uploads', fileName);
   const size = getFileSizeInBytes(filePath);
   const ext = fileName.split('.').pop();
   const mimeType = mime.lookup(ext || '') || '';
@@ -84,13 +85,19 @@ async function checkFileExistsBeforeUpload(files: string[]) {
     if (fileWhereName) {
       existingFiles.push(fileWhereName);
     } else {
-      const fileData = getFileData(fileName);
-      const fileNameNoExtension = fileName.split('.').shift();
-      const [file] = await uploadFile(fileData, fileNameNoExtension!);
-      uploadedFiles.push(file);
+      const filePath = path.join(PROJECT_ROOT, 'data', 'uploads', fileName);
+      if (fs.existsSync(filePath)) {
+        const fileData = getFileData(fileName);
+        const fileNameNoExtension = fileName.split('.').shift();
+        const [file] = await uploadFile(fileData, fileNameNoExtension!);
+        uploadedFiles.push(file);
+      } else {
+        console.warn(`Seed file not found, skipping upload: ${filePath}`);
+      }
     }
   }
   const allFiles = [...existingFiles, ...uploadedFiles];
+  if (allFiles.length === 0) return null;
   return allFiles.length === 1 ? allFiles[0] : allFiles;
 }
 
@@ -99,10 +106,10 @@ async function updateBlocks(blocks: any[]) {
   for (const block of blocks) {
     if (block.__component === 'shared.media') {
       const uploadedFiles = await checkFileExistsBeforeUpload([block.file]);
-      updatedBlocks.push({ ...block, file: uploadedFiles });
+      updatedBlocks.push({ ...block, ...(uploadedFiles ? { file: uploadedFiles } : {}) });
     } else if (block.__component === 'shared.slider') {
       const existingAndUploadedFiles = await checkFileExistsBeforeUpload(block.files);
-      updatedBlocks.push({ ...block, files: existingAndUploadedFiles });
+      updatedBlocks.push({ ...block, ...(existingAndUploadedFiles ? { files: existingAndUploadedFiles } : {}) });
     } else {
       updatedBlocks.push(block);
     }
@@ -134,7 +141,7 @@ async function importAuthors() {
   for (const author of authors) {
     if (author.avatar) {
       const avatar = await checkFileExistsBeforeUpload([author.avatar]);
-      await createEntry({ model: 'author', entry: { ...author, avatar } });
+      await createEntry({ model: 'author', entry: { ...author, ...(avatar ? { avatar } : {}) } });
     } else {
       await createEntry({ model: 'author', entry: author });
     }
@@ -147,7 +154,7 @@ async function importArticles() {
     const updatedBlocks = await updateBlocks(article.blocks);
     await createEntry({
       model: 'article',
-      entry: { ...article, cover, blocks: updatedBlocks, publishedAt: Date.now() },
+      entry: { ...article, ...(cover ? { cover } : {}), blocks: updatedBlocks, publishedAt: Date.now() },
     });
   }
 }
@@ -177,9 +184,9 @@ async function importGlobal() {
     model: 'global',
     entry: {
       ...global,
-      favicon,
+      ...(favicon ? { favicon } : {}),
       publishedAt: Date.now(),
-      defaultSeo: { ...global.defaultSeo, shareImage },
+      defaultSeo: { ...global.defaultSeo, ...(shareImage ? { shareImage } : {}) },
     },
   });
 }
